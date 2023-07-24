@@ -1,6 +1,14 @@
 import os
 from setuptools import setup, find_packages, Extension
-import numpy as np
+
+
+class get_numpy_include(object):
+     """Returns Numpy's include path with lazy import.
+     """
+     def __str__(self):
+         import numpy
+         return numpy.get_include()
+
 
 sdkdir = 'vamp-plugin-sdk/src/vamp-hostsdk/'
 vpydir = 'native/'
@@ -23,7 +31,7 @@ def read(*paths):
 vampyhost = Extension('vampyhost',
                       sources = srcfiles,
                       define_macros = [ ('_USE_MATH_DEFINES', 1) ],
-                      include_dirs = [ 'vamp-plugin-sdk', np.get_include() ])
+                      include_dirs = [ 'vamp-plugin-sdk', get_numpy_include() ])
 
 setup (name = 'vamp',
        version = '1.1.0',
