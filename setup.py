@@ -3,11 +3,11 @@ from setuptools import setup, find_packages, Extension
 
 
 class get_numpy_include(object):
-     """Returns Numpy's include path with lazy import.
-     """
-     def __str__(self):
-         import numpy
-         return numpy.get_include()
+    """Returns Numpy's include path with lazy import.
+    """
+    def __str__(self):
+        import numpy
+        return numpy.get_include()
 
 
 sdkdir = 'vamp-plugin-sdk/src/vamp-hostsdk/'
